@@ -88,6 +88,7 @@ const FilterOptionTemplate = ({
   showClearByFilter,
   preventRouteChange,
 }) => {
+
   const [open, setOpen] = useState(!initiallyCollapsed)
   const { getSettings } = useRuntime()
   const scrollable = useRef()
@@ -161,9 +162,19 @@ const FilterOptionTemplate = ({
         ? FACETS_RENDER_THRESHOLD
         : filteredFacets.length
 
+    function sortByWeight(arr) {
+      return arr.sort((a, b) => {
+        const weightA = parseInt(a.name);
+        const weightB = parseInt(b.name);
+        return weightA - weightB;
+      });
+    }
+    const newFacets = sortByWeight(filteredFacets)
+
     return (
       <>
-        {filteredFacets.slice(0, endSlice).map(children)}
+        {/* {console.log("filteredFacets ", filteredFacets)} */}
+        {newFacets.slice(0, endSlice).map(children)}
         {placeholderSize > 0 && <div style={{ height: placeholderSize }} />}
         {shouldTruncate && (
           <ShowMoreFilterButton
@@ -292,8 +303,8 @@ const FilterOptionTemplate = ({
         data-testid="scrollable-element"
         style={
           !selected &&
-          (!(truncateFilters || isLazyFacetsFetchEnabled) ||
-            isLazyRenderEnabled)
+            (!(truncateFilters || isLazyFacetsFetchEnabled) ||
+              isLazyRenderEnabled)
             ? { maxHeight: '200px' }
             : {}
         }
@@ -307,9 +318,10 @@ const FilterOptionTemplate = ({
             theme={{ content: handles.filterContent }}
           >
             {thresholdForFacetSearch !== undefined &&
-            thresholdForFacetSearch < filters.length ? (
+              thresholdForFacetSearch < filters.length ? (
               <SearchFilterBar name={title} handleChange={setSearchTerm} />
             ) : null}
+
             {renderChildren()}
           </Collapse>
         ) : (

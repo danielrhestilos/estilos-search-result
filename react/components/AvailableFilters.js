@@ -8,7 +8,6 @@ const LAZY_RENDER_THRESHOLD = 3
 
 const AvailableFilters = ({ filters = [], ...props }) => {
   const [lastOpenFilter, setLastOpenFilter] = useState()
-
   return filters.map((filter, i) => (
     <Filter
       filter={filter}
@@ -41,7 +40,16 @@ const Filter = ({
   scrollToTop
 }) => {
   const { type, title, facets, quantity, oneSelectedCollapse = false } = filter
-
+  let newTitle = null
+  if (title == 'Category 4') {
+    newTitle = 'Tipo de producto'
+  }
+  else if (title == 'Category 5') {
+    newTitle = 'Producto'
+  }
+  else {
+    newTitle = title
+  }
   switch (type) {
     case 'PriceRanges':
       return (
@@ -59,8 +67,8 @@ const Filter = ({
     default:
       return (
         <SearchFilter
-          key={title}
-          title={title}
+          key={newTitle}
+          title={newTitle}
           facets={facets}
           quantity={quantity}
           oneSelectedCollapse={oneSelectedCollapse}
