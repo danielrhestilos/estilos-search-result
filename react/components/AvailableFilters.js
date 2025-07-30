@@ -6,9 +6,17 @@ import PriceRange from './PriceRange'
 
 const LAZY_RENDER_THRESHOLD = 3
 
+const moveBrandFirst = (filters)=> {
+  return [
+    ...filters.filter(f => f.key === 'brand'),     // primero los "brand"
+    ...filters.filter(f => f.key !== 'brand'),     // luego el resto
+  ];
+}
+
 const AvailableFilters = ({ filters = [], ...props }) => {
   const [lastOpenFilter, setLastOpenFilter] = useState()
-  return filters.map((filter, i) => (
+  const newFilters = moveBrandFirst(filters)
+  return newFilters.map((filter, i) => (
     <Filter
       filter={filter}
       {...props}
@@ -40,6 +48,8 @@ const Filter = ({
   scrollToTop
 }) => {
   const { type, title, facets, quantity, oneSelectedCollapse = false } = filter
+  console.log('facets',facets);
+  
   let newTitle = null
   if (title == 'Category 4') {
     newTitle = 'Tipo de producto'
