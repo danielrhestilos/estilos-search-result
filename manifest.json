@@ -1,6 +1,6 @@
 {
   "name": "search-result",
-  "vendor": "vtex",
+  "vendor": "estilospe",
   "version": "3.110.6",
   "title": "VTEX Search Result",
   "description": "A search result wrapper component",
@@ -18,6 +18,7 @@
     "docs": "0.x"
   },
   "dependencies": {
+    "vtex.search-result":"3.x",
     "vtex.store-graphql": "2.x",
     "vtex.store-resources": "0.x",
     "vtex.store-components": "3.x",
