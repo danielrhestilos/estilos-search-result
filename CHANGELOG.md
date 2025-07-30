@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [3.110.7] - 2025-07-30
+
 ## [3.110.6] - 2021-12-08
 ### Fixed
 - Safely URI decoding `query` to prevent errors when the search query contains breaking characters such as "%"
