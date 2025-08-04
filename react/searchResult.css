@@ -143,6 +143,7 @@
 }
 
 .filterPopupTitle {
+  text-transform: none;
 }
 
 .filterPopupArrowIcon {
@@ -168,6 +169,7 @@
 }
 
 .orderByOptionItem {
+  font-family: "Outfit";
   min-width: 180px;
 }
 

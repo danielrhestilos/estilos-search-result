@@ -7,15 +7,15 @@ import SelectionListOrderBy from './components/SelectionListOrderBy'
 export const SORT_OPTIONS = [
   {
     value: '',
-    label: 'store/ordenation.relevance',
+    label: 'Lo más visto',
   },
   {
     value: 'OrderByTopSaleDESC',
-    label: 'store/ordenation.sales',
+    label: 'Lo más vendido',
   },
   {
     value: 'OrderByReleaseDateDESC',
-    label: 'store/ordenation.release.date',
+    label: 'Lo último',
   },
   {
     value: 'OrderByBestDiscountDESC',
